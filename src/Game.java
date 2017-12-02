@@ -24,6 +24,8 @@ public class Game {
 	public Boulder test_boulder;
 	public Platform test_platform;
 	
+	public Boulder[] boulders;
+	
 	public static void init() {
 		try {
 			character = ImageIO.read(new File("res/filler character.png"));
@@ -43,6 +45,7 @@ public class Game {
 		main_dude = new Character();
 		bg = new Background();
 		test_boulder = new Boulder();
+		boulders = new Boulder[10];
 		test_platform = new Platform();
 	}
 	
