@@ -23,6 +23,7 @@ public class Boulder extends GameObject {
     	Graphics2D g2d = (Graphics2D)g;
     	g2d.rotate(Math.toRadians(rotate), x + img.getWidth()/2, y+ img.getHeight()/2);
 		g2d.drawImage(img, x, y, null);
+		g2d.rotate(Math.toRadians(-rotate));
 	}
 
 	@Override
