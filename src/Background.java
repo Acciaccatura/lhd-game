@@ -10,7 +10,7 @@ public class Background extends GameObject {
 
 	@Override
 	public void action() {
-		y += gravity;
+		y += Game.gravity;
 	}
 
 	@Override

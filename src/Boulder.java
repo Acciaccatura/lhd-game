@@ -5,6 +5,8 @@ import java.awt.geom.AffineTransform;
 public class Boulder extends GameObject {
     private int speed; //if negative going left; if positive going right
     private int rotate;
+    public boolean hit;
+    
     
     public Boulder() {
         // initialize instance variables
@@ -46,7 +48,13 @@ public class Boulder extends GameObject {
 	        	speed = 20;
 	        }
 		}
+		
+		double distance = Math.sqrt(Math.pow(x + Game.main_dude.x,2)+ Math.pow(y+ Game.main_dude.y,2));
+		double maxDistance = img.getHeight() + Game.main_dude.img.getHeight();
+		if(distance > maxDistance) {
+			System.err.println("hit");
+			hit = true;
 	}
     
-    
+	}    
 }

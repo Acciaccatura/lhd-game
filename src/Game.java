@@ -18,8 +18,8 @@ public class Game {
 								character
 								;
 	
-	public Character main_dude;
-	public Background bg;
+	public static Character main_dude;
+	public static Background bg;
 	public static int gravity = 0;
 	
 	public static Boulder[] boulders;
@@ -37,8 +37,8 @@ public class Game {
 			for (int a = 0; a < boulders.length; a++) {
 				boulders[a] = new Boulder();
 				boulders[a].y += 78*a;
-				platform[a] = new Platform();
-				platform[a].y += 78*a;
+				platforms[a] = new Platform();
+				platforms[a].y += 78*a;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -52,8 +52,7 @@ public class Game {
 		main_dude = new Character();
 		Main.frame.addKeyListener(main_dude);
 		bg = new Background();
-		test_boulder = new Boulder();
-		test_platform = new Platform();
+
 	}
 	
 	public void update() {
@@ -63,7 +62,7 @@ public class Game {
 		} else if (gravity != 0) gravity--;
 		bg.action();
 		main_dude.action();
-		test_platform.action();
+
 		for (Boulder b: boulders) b.action();
 		for (Platform p: platforms) p.action();
 	}
@@ -72,7 +71,7 @@ public class Game {
 		g.fillRect(0, 0, Main.GAME_WIDTH, Main.GAME_HEIGHT);
 		bg.draw(g);
 		main_dude.draw(g);
-		test_platform.draw(g);
+
 		for (Boulder b: boulders) b.draw(g);
 		for (Platform p: platforms) p.draw(g);
 	}
@@ -80,8 +79,7 @@ public class Game {
 	public void draw() {
 		Main.frame.getGraphics().fillRect(0, 0, Main.GAME_WIDTH, Main.GAME_HEIGHT);
 		main_dude.draw(Main.frame.getGraphics());
-		test_boulder.draw(Main.frame.getGraphics());
-		test_platform.draw(Main.frame.getGraphics());
+
 	}
 	
 	public void start() {
