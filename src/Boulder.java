@@ -12,7 +12,6 @@ public class Boulder extends GameObject {
     	x = 0;
         //y = Game.LevelPositionY +gravity;
         y = 0;
-        
         speed = (int)(Math.random()*10) -5; //random number from [-5, 5]
         if(speed == 0) { //speed can't equal 0
         	speed = 20;
@@ -32,7 +31,7 @@ public class Boulder extends GameObject {
 	public void action() {
 		y += Game.gravity;
 		if(speed > 0 && x >= Main.GAME_WIDTH) { //if going right and reached right end of screen
-			x = 0; //bring boulder back to the left
+			x = -img.getWidth(); //bring boulder back to the left
 		} else if(speed < 0 && x <= (-1)*img.getWidth()) { //if going left and reached left end of screen
 			x = Main.GAME_WIDTH; //bring boulder back to the right
 		} else {
