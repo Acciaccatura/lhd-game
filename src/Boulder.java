@@ -20,7 +20,6 @@ public class Boulder extends GameObject {
     
     @Override
 	public void draw(Graphics g) {
-    	y += Game.gravity;
     	Graphics2D g2d = (Graphics2D)g;
     	g2d.rotate(Math.toRadians(rotate), x + img.getWidth()/2, y+ img.getHeight()/2);
 		g2d.drawImage(img, x, y, null);
@@ -28,6 +27,7 @@ public class Boulder extends GameObject {
 
 	@Override
 	public void action() {
+		y += Game.gravity;
 		if(speed > 0 && x >= Main.GAME_WIDTH) { //if going right and reached right end of screen
 			x = 0; //bring boulder back to the left
 		} else if(speed < 0 && x <= (-1)*img.getWidth()) { //if going left and reached left end of screen
