@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -9,26 +10,39 @@ public class Game {
 	private static final long MAX_FPS = 60;
 	private static final long DELTA = 1000/MAX_FPS;
 	
-	private GameObject character;
+	//resources
+	public static BufferedImage boulder,
+								background,
+								levels,
+								button,
+								character
+								;
 	
-	public Game() {
+	public Character main_dude;
+	
+	public static void init() {
 		try {
-			Main.frame.getGraphics().setColor(Color.GRAY);
-			character = new GameObject(ImageIO.read(new File("res/filler character.png")), 60, 60);
+			character = ImageIO.read(new File("res/filler character.png"));
 		} catch (IOException e) {
-			// shit
-			System.exit(-1);
 			e.printStackTrace();
+			System.err.println("Failed to import resources!");
+			System.exit(-1);
 		}
 	}
 	
+	public Game() {
+		init();
+		Main.frame.getGraphics().setColor(Color.GRAY);
+		main_dude = new Character();
+	}
+	
 	public void update() {
-		character.action();
+		main_dude.action();
 	}
 	
 	public void draw() {
 		Main.frame.getGraphics().fillRect(0, 0, Main.GAME_WIDTH, Main.GAME_HEIGHT);
-		character.draw(Main.frame.getGraphics());
+		main_dude.draw(Main.frame.getGraphics());
 	}
 	
 	public void start() {

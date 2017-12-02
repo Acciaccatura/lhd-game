@@ -1,24 +1,17 @@
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-public class GameObject {
+public abstract class GameObject {
 	
 	public BufferedImage img;
 	public int x, y;
 	
-	public GameObject(BufferedImage img, int x, int y) {
-		this.img = img;
-		this.x = x;
-		this.y = y;
+	public GameObject() {
+		
 	}
 	
-	public void action() {
-		x += 1;
-		y += 2;
-	}
+	public abstract void action();
 	
-	public void draw(Graphics g) {
-		g.drawImage(img, x, y, null);
-	}
+	public abstract void draw(Graphics g);
 
 }
