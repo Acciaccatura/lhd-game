@@ -4,13 +4,13 @@ public class Background extends GameObject {
 	
 	public Background() {
 		img = Game.background;
-		int x = 0;
-		int y = 0;
+		x = 0;
+		y = 0;
 	}
 
 	@Override
 	public void action() {
-		y += 2;
+		y -= 2;
 	}
 
 	@Override
