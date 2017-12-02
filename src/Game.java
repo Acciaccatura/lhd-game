@@ -51,6 +51,7 @@ public class Game {
 	}
 	
 	public void draw(Graphics g) {
+		if (++gravity >= 10) gravity = -5;
 		g.fillRect(0, 0, Main.GAME_WIDTH, Main.GAME_HEIGHT);
 		bg.draw(g);
 		main_dude.draw(g);

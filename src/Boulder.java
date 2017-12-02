@@ -10,7 +10,7 @@ public class Boulder extends GameObject {
     	img = Game.boulder;
     	x = 0;
         //y = Game.LevelPositionY +gravity;
-        y = 0
+        y = 0;
         
         speed = (int)(Math.random()*10) -5; //random number from [-5, 5]
         if(speed == 0) { //speed can't equal 0
