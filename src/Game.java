@@ -48,14 +48,17 @@ public class Game {
 	public Game() {
 		init();
 		main_dude = new Character();
+		Main.frame.addKeyListener(main_dude);
 		bg = new Background();
 		test_boulder = new Boulder();
 		test_platform = new Platform();
 	}
 	
 	public void update() {
-		if (gravity != 0) gravity--;
-		else if (gravity > 12) gravity = 0;
+		if (gravity < -12) {
+			gravity = 0;
+			main_dude.jump = false;
+		} else if (gravity != 0) gravity--;
 		bg.action();
 		main_dude.action();
 		test_platform.action();

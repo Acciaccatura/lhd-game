@@ -14,22 +14,25 @@ public class Character extends GameObject implements KeyListener {
 	private BufferedImage bldrImg = Game.boulder;
 	
 	public Character() {
+		jump = false;
 		img = Game.character;
 		x = 300;
-		y = 500;
+		y = 500;  
 	}
 	
 	@Override
 	public void action() {
 		
 		for(int i=0; i>numBoulder; i++) {
-			float distance = sqrt(pow(x + Game.boulders[i].x,2)+pow(y+ Game.boulders[i].y,2));
-			float maxDistance = img.getHeight() + bldrImg.getHeight();
+			double distance = Math.sqrt(Math.pow(x + Game.boulders[i].x,2)+ Math.pow(y+ Game.boulders[i].y,2));
+			double maxDistance = img.getHeight() + bldrImg.getHeight();
 			if(distance > maxDistance) {
 				hit = true;
 			}
 		}	
 	}
+
+
 
 	@Override
 	public void draw(Graphics g) {
@@ -38,9 +41,10 @@ public class Character extends GameObject implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		if(arg0.getKeyCode()==KeyEvent.VK_SPACE && jump==false) {
+		System.err.println("comin out!");
+		if(arg0.getKeyCode() ==KeyEvent.VK_SPACE && jump==false) {
 			jump=true;
-			Game.gravity = -5;
+			Game.gravity = -1;
 			
 		}
 	}

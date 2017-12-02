@@ -13,10 +13,10 @@ public class Main {
 	public static JPanel bootleg_canvas;
 	
 	public static void main(String[] args) {
-		Game game = new Game();
 		frame = new JFrame("some java game lol");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(GAME_WIDTH, GAME_HEIGHT));
+		Game game = new Game();
 		bootleg_canvas = new JPanel() {
 			
 			private static final long serialVersionUID = 1L;
