@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -20,15 +19,10 @@ public class Game {
 								;
 	
 	public Character main_dude;
-	public Background bg;
 	
 	public static void init() {
 		try {
 			character = ImageIO.read(new File("res/filler character.png"));
-			boulder = ImageIO.read(new File("res/filler boulder.png"));
-			button = ImageIO.read(new File("res/filler button.png"));
-			levels = ImageIO.read(new File("res/filler level.png"));
-			background = ImageIO.read(new File("res/filler background image.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.err.println("Failed to import resources!");
@@ -40,19 +34,15 @@ public class Game {
 		init();
 		Main.frame.getGraphics().setColor(Color.GRAY);
 		main_dude = new Character();
-		bg = new Background();
 	}
 	
 	public void update() {
 		main_dude.action();
-		bg.action();
 	}
 	
 	public void draw() {
-		Graphics g = Main.frame.getGraphics();
-		g.fillRect(0, 0, Main.GAME_WIDTH, Main.GAME_HEIGHT);
-		bg.draw(g);
-		main_dude.draw(g);
+		Main.frame.getGraphics().fillRect(0, 0, Main.GAME_WIDTH, Main.GAME_HEIGHT);
+		main_dude.draw(Main.frame.getGraphics());
 	}
 	
 	public void start() {
