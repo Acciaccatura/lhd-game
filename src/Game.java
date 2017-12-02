@@ -33,6 +33,11 @@ public class Game {
 			background = ImageIO.read(new File("res/filler background image.png"));
 			button = ImageIO.read(new File("res/filler button.png"));
 			platform = ImageIO.read(new File("res/filler platform.png"));
+			boulders = new Boulder[10];
+			for (int a = 0; a < boulders.length; a++) {
+				boulders[a] = new Boulder();
+				boulders[a].y += 78*a;
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.err.println("Failed to import resources!");
@@ -45,11 +50,6 @@ public class Game {
 		main_dude = new Character();
 		bg = new Background();
 		test_boulder = new Boulder();
-		boulders = new Boulder[10];
-		for (int a = 0; a < boulders.length; a++) {
-			boulders[a] = new Boulder();
-			boulders[a].y += 78*a;
-		}
 		test_platform = new Platform();
 	}
 	
