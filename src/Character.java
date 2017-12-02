@@ -1,23 +1,28 @@
 import java.awt.Graphics;
+import java.awt.event;
 
 public class Character extends GameObject {
 
 	public Character() {
 		img = Game.character;
-		x = 60;
-		y = 60;
+		x = 300;
+		y = 500;
 	}
 	
 	@Override
 	public void action() {
-		x++;
-		y+=2;
-		
+		keyPressed(VK_SPACE);
 	}
 
 	@Override
 	public void draw(Graphics g) {
 		g.drawImage(img, x, y, null);
+	}
+
+	public void keyPressed(KeyEvent e){
+		if(e.getKeyCode()==KeyEvent.VK_SPACE){
+			y+=10;
+		}
 	}
 
 }
