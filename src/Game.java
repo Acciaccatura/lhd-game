@@ -21,10 +21,9 @@ public class Game {
 	public Character main_dude;
 	public Background bg;
 	public static int gravity = 0;
-	public Boulder test_boulder;
-	public Platform test_platform;
 	
 	public static Boulder[] boulders;
+	public static Platform[] platforms;
 	
 	public static void init() {
 		try {
@@ -34,9 +33,12 @@ public class Game {
 			button = ImageIO.read(new File("res/filler button.png"));
 			platform = ImageIO.read(new File("res/filler platform.png"));
 			boulders = new Boulder[10];
+			platforms = new Platform[10];
 			for (int a = 0; a < boulders.length; a++) {
 				boulders[a] = new Boulder();
 				boulders[a].y += 78*a;
+				platform[a] = new Platform();
+				platform[a].y += 78*a;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -63,6 +65,7 @@ public class Game {
 		main_dude.action();
 		test_platform.action();
 		for (Boulder b: boulders) b.action();
+		for (Platform p: platforms) p.action();
 	}
 	
 	public void draw(Graphics g) {
@@ -71,6 +74,7 @@ public class Game {
 		main_dude.draw(g);
 		test_platform.draw(g);
 		for (Boulder b: boulders) b.draw(g);
+		for (Platform p: platforms) p.draw(g);
 	}
 	
 	public void draw() {
