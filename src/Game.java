@@ -13,7 +13,7 @@ public class Game {
 	//resources
 	public static BufferedImage boulder,
 								background,
-								levels,
+								platform,
 								button,
 								character
 								;
@@ -22,6 +22,7 @@ public class Game {
 	public Background bg;
 	public static int gravity = 0;
 	public Boulder test_boulder;
+	public Platform test_platform;
 	
 	public static void init() {
 		try {
@@ -29,7 +30,7 @@ public class Game {
 			boulder = ImageIO.read(new File("res/filler boulder.png"));
 			background = ImageIO.read(new File("res/filler background image.png"));
 			button = ImageIO.read(new File("res/filler button.png"));
-			levels = ImageIO.read(new File("res/filler level.png"));
+			platform = ImageIO.read(new File("res/filler platform.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.err.println("Failed to import resources!");
@@ -42,12 +43,14 @@ public class Game {
 		main_dude = new Character();
 		bg = new Background();
 		test_boulder = new Boulder();
+		test_platform = new Platform();
 	}
 	
 	public void update() {
 		bg.action();
 		main_dude.action();
 		test_boulder.action();
+		test_platform.action();
 	}
 	
 	public void draw(Graphics g) {
@@ -56,6 +59,7 @@ public class Game {
 		bg.draw(g);
 		main_dude.draw(g);
 		main_dude.action();
+		test_platform.draw(g);
 		test_boulder.draw(g);
 	}
 	
@@ -63,6 +67,7 @@ public class Game {
 		Main.frame.getGraphics().fillRect(0, 0, Main.GAME_WIDTH, Main.GAME_HEIGHT);
 		main_dude.draw(Main.frame.getGraphics());
 		test_boulder.draw(Main.frame.getGraphics());
+		test_platform.draw(Main.frame.getGraphics());
 	}
 	
 	public void start() {
