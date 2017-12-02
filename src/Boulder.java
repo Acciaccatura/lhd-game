@@ -37,8 +37,8 @@ public class Boulder extends GameObject {
 			rotate += 2;
 		}
 		
-		if(y >= Main.GAME_HEIGHT) {
-			y = 0;
+		if(y <= (-1)*img.getHeight()) { //reached top
+			y = Main.GAME_HEIGHT; //reset back to bottom
 			speed = (int)(Math.random()*10) -5; //random number from [-5, 5]
 	        if(speed == 0) { //speed can't equal 0
 	        	speed = 20;
