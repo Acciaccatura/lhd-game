@@ -10,7 +10,7 @@ public class Boulder extends GameObject {
     	img = Game.boulder;
     	x = 0;
         //y = Game.LevelPositionY +gravity;
-        y = 0 + Game.gravity;
+        y = 0
         
         speed = (int)(Math.random()*10) -5; //random number from [-5, 5]
         if(speed == 0) { //speed can't equal 0
@@ -20,7 +20,7 @@ public class Boulder extends GameObject {
     
     @Override
 	public void draw(Graphics g) {
-    	
+    	y += Game.gravity;
     	Graphics2D g2d = (Graphics2D)g;
     	g2d.rotate(Math.toRadians(rotate), x + img.getWidth()/2, y+ img.getHeight()/2);
 		g2d.drawImage(img, x, y, null);
