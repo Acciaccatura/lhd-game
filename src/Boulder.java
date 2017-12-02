@@ -30,7 +30,7 @@ public class Boulder extends GameObject {
 	public void action() {
 		if(speed > 0 && x >= Main.GAME_WIDTH) { //if going right and reached right end of screen
 			x = 0; //bring boulder back to the left
-		} else if(speed < 0 && x <= 0) { //if going left and reached left end of screen
+		} else if(speed < 0 && x <= (-1)*img.getWidth()) { //if going left and reached left end of screen
 			x = Main.GAME_WIDTH; //bring boulder back to the right
 		} else {
 			x += speed;
