@@ -6,7 +6,7 @@ public class Boulder extends GameObject {
     private int rotate;
     
     public Boulder() {
-        // initialise instance variables
+        // initialize instance variables
     	img = Game.boulder;
     	x = 0;
         //y = Game.LevelPositionY +gravity;
@@ -35,6 +35,14 @@ public class Boulder extends GameObject {
 		} else {
 			x += speed;
 			rotate += 2;
+		}
+		
+		if(y >= Main.GAME_HEIGHT) {
+			y = 0;
+			speed = (int)(Math.random()*10) -5; //random number from [-5, 5]
+	        if(speed == 0) { //speed can't equal 0
+	        	speed = 20;
+	        }
 		}
 	}
     
