@@ -24,7 +24,7 @@ public class Game {
 	public Boulder test_boulder;
 	public Platform test_platform;
 	
-	public Boulder[] boulders;
+	public static Boulder[] boulders;
 	
 	public static void init() {
 		try {
@@ -46,24 +46,28 @@ public class Game {
 		bg = new Background();
 		test_boulder = new Boulder();
 		boulders = new Boulder[10];
+		for (int a = 0; a < boulders.length; a++) {
+			boulders[a] = new Boulder();
+			boulders[a].y += 78*a;
+		}
 		test_platform = new Platform();
 	}
 	
 	public void update() {
+		if (gravity != 0) gravity--;
+		else if (gravity > 12) gravity = 0;
 		bg.action();
 		main_dude.action();
-		test_boulder.action();
 		test_platform.action();
+		for (Boulder b: boulders) b.action();
 	}
 	
 	public void draw(Graphics g) {
-		if (--gravity <= -15) gravity = 0;
 		g.fillRect(0, 0, Main.GAME_WIDTH, Main.GAME_HEIGHT);
 		bg.draw(g);
 		main_dude.draw(g);
-		main_dude.action();
 		test_platform.draw(g);
-		test_boulder.draw(g);
+		for (Boulder b: boulders) b.draw(g);
 	}
 	
 	public void draw() {

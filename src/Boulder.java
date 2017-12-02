@@ -1,5 +1,6 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 
 public class Boulder extends GameObject {
     private int speed; //if negative going left; if positive going right
@@ -21,9 +22,10 @@ public class Boulder extends GameObject {
     @Override
 	public void draw(Graphics g) {
     	Graphics2D g2d = (Graphics2D)g;
+		AffineTransform old = g2d.getTransform();
     	g2d.rotate(Math.toRadians(rotate), x + img.getWidth()/2, y+ img.getHeight()/2);
 		g2d.drawImage(img, x, y, null);
-		g2d.rotate(Math.toRadians(-rotate));
+		g2d.setTransform(old);
 	}
 
 	@Override
