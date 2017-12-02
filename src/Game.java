@@ -20,7 +20,8 @@ public class Game {
 	
 	public Character main_dude;
 	public Background bg;
-	public int gravity = 0;
+	public static int gravity = 0;
+	public Boulder test_boulder;
 	
 	public static void init() {
 		try {
@@ -40,11 +41,13 @@ public class Game {
 		init();
 		main_dude = new Character();
 		bg = new Background();
+		test_boulder = new Boulder();
 	}
 	
 	public void update() {
 		bg.action();
 		main_dude.action();
+		test_boulder.action();
 	}
 	
 	public void draw(Graphics g) {
@@ -52,11 +55,13 @@ public class Game {
 		bg.draw(g);
 		main_dude.draw(g);
 		main_dude.action();
+		test_boulder.draw(g);
 	}
 	
 	public void draw() {
 		Main.frame.getGraphics().fillRect(0, 0, Main.GAME_WIDTH, Main.GAME_HEIGHT);
 		main_dude.draw(Main.frame.getGraphics());
+		test_boulder.draw(Main.frame.getGraphics());
 	}
 	
 	public void start() {

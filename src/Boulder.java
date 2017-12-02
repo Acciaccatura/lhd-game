@@ -1,13 +1,16 @@
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class Boulder extends GameObject {
     private int speed; //if negative going left; if positive going right
+    private int rotate;
     
     public Boulder() {
         // initialise instance variables
     	img = Game.boulder;
-        x = 0;
-        //y = Game.LevelPositionY;
+    	x = 0;
+        //y = Game.LevelPositionY +gravity;
+        y = 0 + Game.gravity;
         
         speed = (int)(Math.random()*10) -5; //random number from [-5, 5]
         if(speed == 0) { //speed can't equal 0
@@ -17,8 +20,10 @@ public class Boulder extends GameObject {
     
     @Override
 	public void draw(Graphics g) {
-    	//g.rotate(Math.toRadians(3)); cant rotate yet- need graphics 2D
-		g.drawImage(img, x, y, null);
+    	
+    	Graphics2D g2d = (Graphics2D)g;
+    	g2d.rotate(Math.toRadians(rotate), x + img.getWidth()/2, y+ img.getHeight()/2);
+		g2d.drawImage(img, x, y, null);
 	}
 
 	@Override
@@ -29,6 +34,7 @@ public class Boulder extends GameObject {
 			x = Main.GAME_WIDTH; //bring boulder back to the right
 		} else {
 			x += speed;
+			rotate += 2;
 		}
 	}
     
