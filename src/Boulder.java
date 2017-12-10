@@ -14,7 +14,7 @@ public class Boulder extends GameObject {
     	x = 0;
         //y = Game.LevelPositionY +gravity;
         y = 0;
-        speed = (int)(Math.random()*10) -5; //random number from [-5, 5]
+        speed = (int)(Math.random()*11) -5; //random number from [-5, 5]
         if(speed == 0) { //speed can't equal 0
         	speed = 20;
         }
