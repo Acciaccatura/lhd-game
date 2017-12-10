@@ -1,12 +1,13 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import java.util.Random;
 
 public class Boulder extends GameObject {
     private int speed; //if negative going left; if positive going right
     private int rotate;
     public boolean hit;
-    
+    private Random r;
     
     public Boulder() {
         // initialize instance variables
@@ -14,10 +15,7 @@ public class Boulder extends GameObject {
     	x = 0;
         //y = Game.LevelPositionY +gravity;
         y = 0;
-        speed = (int)(Math.random()*11) -5; //random number from [-5, 5]
-        if(speed == 0) { //speed can't equal 0
-        	speed = 20;
-        }
+        setSpeed();
     }
     
     @Override
@@ -43,10 +41,7 @@ public class Boulder extends GameObject {
 		
 		if(y <= (-1)*img.getHeight()) { //reached top
 			y = Main.GAME_HEIGHT; //reset back to bottom
-			speed = (int)(Math.random()*10) -5; //random number from [-5, 5]
-	        if(speed == 0) { //speed can't equal 0
-	        	speed = 20;
-	        }
+			setSpeed();
 		}
 		
 		double distance = Math.sqrt(Math.pow(x + Game.main_dude.x,2)+ Math.pow(y+ Game.main_dude.y,2));
@@ -54,7 +49,16 @@ public class Boulder extends GameObject {
 		if(distance > maxDistance) {
 			System.err.println("hit");
 			hit = true;
+		}
 	}
-    
-	}    
+	
+	//random number from [-5, 5]
+	private void setSpeed() {
+		speed = r.nextInt(11) - 5;
+		//speed = (int)(Math.random()*11) -5;
+		
+        if(speed == 0) { //speed can't equal 0, 20 is any random number instead
+        	speed = 20;
+        }
+	}
 }
