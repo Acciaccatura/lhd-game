@@ -7,7 +7,6 @@ public class Boulder extends GameObject {
     private int speed; //if negative going left; if positive going right
     private int rotate;
     public boolean hit;
-    private Random r;
     
     public Boulder() {
         // initialize instance variables
@@ -32,7 +31,8 @@ public class Boulder extends GameObject {
 		y += Game.gravity;
 		if(speed > 0 && x >= Main.GAME_WIDTH) { //if going right and reached right end of screen
 			x = -img.getWidth(); //bring boulder back to the left
-		} else if(speed < 0 && x <= (-1)*img.getWidth()) { //if going left and reached left end of screen
+		} 
+		else if(speed < 0 && x <= (-1)*img.getWidth()) { //if going left and reached left end of screen
 			x = Main.GAME_WIDTH; //bring boulder back to the right
 		} else {
 			x += speed;
@@ -54,10 +54,10 @@ public class Boulder extends GameObject {
 	
 	//random number from [-5, 5]
 	private void setSpeed() {
+		Random r = new Random();
 		speed = r.nextInt(11) - 5;
-		//speed = (int)(Math.random()*11) -5;
 		
-        if(speed == 0) { //speed can't equal 0, 20 is any random number instead
+        if(speed == 0) { //speed can't equal 0, 20 is some random number instead
         	speed = 20;
         }
 	}
